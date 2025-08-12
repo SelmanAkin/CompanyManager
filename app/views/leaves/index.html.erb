@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Leaves</h1>
+
+<div id="leaves">
+  <% @leaves.each do |leave| %>
+    <%= render leave %>
+    <p>
+      <%= link_to "Show this leave", leave %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New leave", new_leafe_path %>
+
+<div>
+ <%= link_to "Ana Sayfa'ya Dön", root_path, class: "btn btn-primary" %>
+</div>

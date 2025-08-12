@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<h2>Leave Details</h2>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @leave.employee.name if @leave.employee.present? %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @leave.start_date %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%= @leave.end_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @leave.status.titleize %>
+</p>
+
+<div>
+  <%= link_to "Edit this leave", edit_leafe_path(@leave) %> |
+  <%= link_to "Back to leaves", leaves_path %>
+
+  <%= button_to "Destroy this leave", @leave, method: :delete, data: { confirm: "Emin misiniz?" } %>
+</div>

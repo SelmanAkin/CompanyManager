@@ -1,0 +1,37 @@
+<%= form_with(model: leave) do |form| %>
+  <% if leave.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(leave.errors.count, "error") %> prohibited this leave from being saved:</h2>
+
+      <ul>
+        <% leave.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :employee_id, "Employee" %>
+    <%= form.collection_select :employee_id, Employee.all, :id, :name, prompt: "Çalışan Seçiniz" %>
+  </div>
+
+  <div>
+    <%= form.label :start_date, style: "display: block" %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div>
+    <%= form.label :end_date, style: "display: block" %>
+    <%= form.date_field :end_date %>
+  </div>
+
+  <div>
+    <%= form.label :status, "Status", style: "display: block" %>
+    <%= form.select :status, Leave.statuses.map { |key, _| [key.humanize.capitalize, key] }, prompt: "Durum Seçiniz" %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Leave" %>
+  </div>
+<% end %>

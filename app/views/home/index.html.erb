@@ -1,0 +1,118 @@
+<div class="dashboard">
+  <div class="quick-links">
+    <%= link_to 'Müşteriler', customers_path, class: "quick-link" %>
+    <%= link_to 'Gelirler', incomes_path, class: "quick-link" %>
+    <%= link_to 'Giderler', expenses_path, class: "quick-link" %>
+    <%= link_to 'Çalışanlar', employees_path, class: "quick-link" %>
+    <%= link_to 'İzinler', leaves_path, class: "quick-link" %>
+  </div>
+
+  <h1>👋 Hoşgeldin, <%= current_user.email %>!</h1>
+
+  <div class="stats">
+    <div class="card">
+      <h2>Müşteri Sayısı</h2>
+      <p><%= Customer.count %></p>
+    </div>
+    <div class="card">
+      <h2>Çalışan Sayısı</h2>
+      <p><%= Employee.count %></p>
+    </div>
+  </div>
+
+  <div class="statistics">
+    <% if current_user %>
+      <%= button_to 'Çıkış Yap', destroy_user_session_path, method: :delete, class: "logout-button" %>
+    <% else %>
+      <h1>👋 Hoşgeldin!</h1>
+    <% end %>
+
+    <div class="istatistikler">
+      <div class="card">
+        <h2>Toplam Gelir</h2>
+        <p><%= number_to_currency(@total_income, unit: "₺") %></p>
+      </div>
+
+      <div class="card">
+        <h2>Toplam Gider</h2>
+        <p><%= number_to_currency(@total_expense, unit: "₺") %></p>
+      </div>
+
+      <div class="card">
+        <h2>Net Kar</h2>
+        <p><%= number_to_currency(@net_profit, unit: "₺") %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dashboard {
+  padding: 30px;
+  text-align: center;
+}
+
+.quick-links {
+  margin-bottom: 30px;
+}
+
+.quick-link {
+  display: inline-block;
+  margin: 10px 15px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #ffffff !important; 
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.quick-link:hover {
+  background-color: #b30000;
+  color: #ffffff !important;
+}
+
+.stats,
+.istatistikler {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.logout-button {
+  margin-top: 15px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #e60000;
+}
+
+</style>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  start_date: 2025-04-27
+  end_date: 2025-04-27
+  status: 1
+
+two:
+  employee: two
+  start_date: 2025-04-27
+  end_date: 2025-04-27
+  status: 1

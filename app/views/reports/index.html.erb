@@ -1,0 +1,56 @@
+<h1>Gelir - Gider Raporu</h1>
+
+<h2>Toplamlar</h2>
+<ul>
+  <li><strong>Toplam Gelir:</strong> <%= number_to_currency(@total_income, unit: "₺") %></li>
+  <li><strong>Toplam Gider:</strong> <%= number_to_currency(@total_expense, unit: "₺") %></li>
+  <li><strong>Net Kar:</strong> <%= number_to_currency(@net_profit, unit: "₺") %></li>
+</ul>
+
+<hr>
+
+<h2>Gelirler</h2>
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Tarih</th>
+      <th>Müşteri</th>
+      <th>Tutar</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @incomes.each do |income| %>
+      <tr>
+        <td><%= income.date %></td>
+        <td><%= income.customer&.name || "Bağımsız" %></td>
+        <td><%= number_to_currency(income.amount, unit: "₺") %></td>
+        <td><%= income.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Giderler</h2>
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Tarih</th>
+      <th>Kategori</th>
+      <th>Tutar</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.date %></td>
+        <td><%= expense.category %></td>
+        <td><%= number_to_currency(expense.amount, unit: "₺") %></td>
+        <td><%= expense.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
