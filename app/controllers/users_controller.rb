@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  
-  before_action :set_user, only: [:destroy, :show]
+  before_action :set_user, only: [:destroy]
 
   def index
     @users = User.all
@@ -10,10 +10,7 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path, notice: "Kullanıcı başarıyla silindi."
   end
-  def show
-    
-  end
-
+  
   private
 
   def set_user

@@ -16,7 +16,6 @@
         <td><%= user.email %></td>
         <td><%= user.created_at.strftime("%d.%m.%Y %H:%M") %></td>
         <td>
-          <%= link_to "Kullanıcıyı Göster", user_path(user)%>
           <%= button_to "Sil", user_path(user), method: :delete, data: { confirm: "Silmek istediğinize emin misiniz?" } %>
         </td>
       </tr>
